@@ -1,9 +1,9 @@
 <configuration>
     <!--数据库连接信息-->
     <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-    <property name="jdbcUrl" value="jdbc:mysql://wuzx.cool:30006/zdy_mybatis"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://wuzx.cool:30006/mybatis"></property>
     <property name="user" value="root"></property>
-    <property name="password" value="root"></property>
+    <property name="password" value="123456"></property>
     <!--引入sql配置信息-->
-    <mapper resource="mapper.xml"></mapper>
+    <mapper resource="UserMapper.xml"></mapper>
 </configuration>

@@ -12,7 +12,7 @@ import lombok.ToString;
 public class MappedStatement {
 
     // id
-    private Integer id; //sql语句
+    private String id; //sql语句
     private String sql; //输入参数
     private Class<?> paramterType; //输出参数
     private Class<?> resultType;

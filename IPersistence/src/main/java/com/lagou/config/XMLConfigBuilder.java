@@ -52,7 +52,7 @@ public class XMLConfigBuilder {
         dataSource.setDriverClass(properties.getProperty("driverClass"));
         dataSource.setJdbcUrl(properties.getProperty("jdbcUrl"));
         dataSource.setUser(properties.getProperty("user"));
-        dataSource.setPassword(properties.getProperty("root"));
+        dataSource.setPassword(properties.getProperty("password"));
 
         configuration.setDataSource(dataSource);
 

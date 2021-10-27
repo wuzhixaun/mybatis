@@ -37,9 +37,14 @@ public class XMLMapperBuilder {
             final String sqlText = element.getTextTrim();
 
             MappedStatement mappedStatement = new MappedStatement();
-            mappedStatement.setId(Integer.valueOf(id));
-            mappedStatement.setParamterType(Class.forName(parameterType));
-            mappedStatement.setResultType(Class.forName(resultType));
+            mappedStatement.setId(id);
+            if (null != parameterType) {
+                mappedStatement.setParamterType(Class.forName(parameterType));
+            }
+            if (null != resultType) {
+                mappedStatement.setResultType(Class.forName(resultType));
+            }
+
             mappedStatement.setSql(sqlText);
             configuration.getMappedStatementMap().put(namespace + "." + id, mappedStatement);
         }
