@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--加载外部的properties文件-->
+    <properties resource="jdbc.properties"/>
+
+    <!--给实体类的全限定名给别名-->
+    <typeAliases>
+            <!-- 给单个实体类取别名 -->
+<!--        <typeAlias type="com.wuzx.pojo.User" alias="xxuser"></typeAlias>-->
+            <!--批量取别名 ,别名就是类型，别名不区分大小写-->
+        <package name="com.wuzx.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="UserMapper.xml"/>
+        <mapper resource="OrderMapper.xml"/>
+    </mappers>
+
+</configuration>
