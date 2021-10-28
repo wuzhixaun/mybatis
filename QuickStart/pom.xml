@@ -20,6 +20,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-redis</artifactId>
+            <version>1.0.0-beta2</version>
+        </dependency>
         <!--mybatis坐标-->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -51,6 +56,25 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>3.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>3.1.2</version>
         </dependency>
     </dependencies>
 

@@ -34,4 +34,6 @@
         SELECT * FROM `user` u  LEFT JOIN orders o ON o.uid = u.id
     </select>
 
+
+
 </mapper>

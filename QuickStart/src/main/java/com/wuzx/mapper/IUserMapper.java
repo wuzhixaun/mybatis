@@ -1,13 +1,11 @@
 package com.wuzx.mapper;
 
 import com.wuzx.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.mybatis.caches.redis.RedisCache;
 
 import java.util.List;
-
+//@CacheNamespace(implementation = RedisCache.class) // 开启二级缓存
 public interface IUserMapper {
 
     List<User> findAll();
@@ -27,4 +25,7 @@ public interface IUserMapper {
 
     @Delete(" delete from user where id=#{id}")
     public void deleteUser(Integer useId);
+
+    @Select("select * from user where id =#{id}")
+    public User findUserById(Integer userId);
 }
