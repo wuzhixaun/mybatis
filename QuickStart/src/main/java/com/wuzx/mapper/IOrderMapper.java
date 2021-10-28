@@ -1,4 +1,4 @@
-package com.wuzx.dao;
+package com.wuzx.mapper;
 
 import com.wuzx.pojo.Order;
 

@@ -1,4 +1,4 @@
-import com.wuzx.dao.IUserDao;
+import com.wuzx.mapper.IUserMapper;
 import com.wuzx.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -116,7 +116,7 @@ public class SqlSessionCRUDTest {
         //获得sqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //获取代理对象
-        final IUserDao userDao = sqlSession.getMapper(IUserDao.class);
+        final IUserMapper userDao = sqlSession.getMapper(IUserMapper.class);
         final List<User> all = userDao.findAll();
 
         //打印结果

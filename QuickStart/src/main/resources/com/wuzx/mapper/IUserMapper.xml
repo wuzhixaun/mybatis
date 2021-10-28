@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuzx.mapper.IUserMapper">
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <insert id="add" parameterType="user">
+        insert into user values(#{id},#{username},#{password},#{birthday})
+    </insert>
+
+    <update id="update" parameterType="user">
+        update user set username=#{username},password=#{password} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from user where id=#{id}
+    </delete>
+
+    <resultMap id="userOrder" type="com.wuzx.pojo.User">
+        <id property="id" column="uid"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="birthday" column="birthday"/>
+        <collection property="orderList" ofType="com.wuzx.pojo.Order">
+            <result property="ordertime" column="ordertime"/>
+            <result property="total" column="total"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUserOrder" resultMap="userOrder">
+        SELECT * FROM `user` u  LEFT JOIN orders o ON o.uid = u.id
+    </select>
+
+</mapper>

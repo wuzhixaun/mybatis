@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wuzx.dao.IOrderMapper">
+<mapper namespace="com.wuzx.mapper.IOrderMapper">
     
     <resultMap id="orderMap" type="order">
         <result property="id" column="id"></result>
