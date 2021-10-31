@@ -11,6 +11,7 @@
         <module>IPersistence</module>
         <module>IPersistence_test</module>
         <module>QuickStart</module>
+        <module>design_pattern</module>
     </modules>
     <packaging>pom</packaging>
 
