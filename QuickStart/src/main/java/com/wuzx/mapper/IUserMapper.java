@@ -28,4 +28,25 @@ public interface IUserMapper {
 
     @Select("select * from user where id =#{id}")
     public User findUserById(Integer userId);
+
+
+    @Select(" select  * from user where id =#{adc}")
+    User findById(Integer id);
+
+
+    /**
+     *     private String username;
+     *     private String password;
+     *     private String birthday;
+     * @return
+     */
+    @Select("select * from user")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "username",column = "username"),
+            @Result(property = "password",column = "password"),
+            @Result(property = "birthday",column = "birthday"),
+            @Result(property = "orderList",javaType = List.class,column = "id",many = @Many(select = "com.wuzx.mapper.IOrderMapper.findByUserId"))
+    })
+    List<User> findAllByAn();
 }

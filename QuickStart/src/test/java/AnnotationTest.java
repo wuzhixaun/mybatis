@@ -1,4 +1,6 @@
+import com.wuzx.mapper.IOrderMapper;
 import com.wuzx.mapper.IUserMapper;
+import com.wuzx.pojo.Order;
 import com.wuzx.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -23,6 +25,7 @@ public class AnnotationTest {
 
 
     private SqlSession sqlSession;
+
     @Before
     public void before() throws IOException {
         //加载核心配置文件
@@ -77,7 +80,6 @@ public class AnnotationTest {
     }
 
 
-
     @Test
     public void findAll() {
         // 获取代理对象
@@ -90,13 +92,32 @@ public class AnnotationTest {
     }
 
 
+    @Test
+    public void findAllOrder() {
+        // 获取代理对象
+        final IOrderMapper orderMapper = sqlSession.getMapper(IOrderMapper.class);
 
 
+        final List<Order> all = orderMapper.findAll();
+
+        for (Order order : all) {
+            System.out.println(order);
+        }
+    }
 
 
+    @Test
+    public void findAllUser() {
+        // 获取代理对象
+        final IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
 
 
+        final List<User> all = mapper.findAllByAn();
 
+        for (User user : all) {
+            System.out.println(user);
+        }
+    }
 
 
 }
