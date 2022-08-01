@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class CacheTest {
 
@@ -64,11 +65,11 @@ public class CacheTest {
 
 
         final User user1 = mapper1.findUserById(1);
-        sqlSession1.clearCache();
+        sqlSession1.close();
         final User user2 = mapper2.findUserById(1);
-        sqlSession2.clearCache();
+        sqlSession2.close();
         final User user3 = mapper3.findUserById(1);
-        sqlSession3.clearCache();
+        sqlSession3.close();
 
 
         System.out.println(user1==user2);

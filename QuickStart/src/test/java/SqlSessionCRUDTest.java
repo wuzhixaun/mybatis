@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.channels.Pipe;
 import java.util.List;
 
 public class SqlSessionCRUDTest {
@@ -21,9 +22,10 @@ public class SqlSessionCRUDTest {
         //获得sqlSession工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得sqlSession对象
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
         //执行sql语句
-        List<User> userList = sqlSession.selectList("userMapper.findAll");
+        List<User> userLis1t = sqlSession.selectList("com.wuzx.mapper.IUserMapper.findAll");
+        List<User> userList = sqlSession.selectList("com.wuzx.mapper.IUserMapper.findAll");
         //打印结果
         System.out.println(userList);
         //释放资源
@@ -42,12 +44,12 @@ public class SqlSessionCRUDTest {
 
 
         User user = new User();
-        user.setId(4);
+        user.setId(6);
         user.setUsername("张三");
         user.setPassword("123456");
         user.setBirthday("1996-06-06");
         //执行sql语句
-        final int insert = sqlSession.insert("userMapper.add", user);
+        final int insert = sqlSession.insert("com.wuzx.mapper.IUserMapper.add", user);
         //打印结果
         System.out.println(insert);
 
@@ -73,7 +75,7 @@ public class SqlSessionCRUDTest {
         user.setPassword("123456");
         user.setBirthday("1996-06-06");
         //执行sql语句
-        final int insert = sqlSession.update("userMapper.update", user);
+        final int insert = sqlSession.update("com.wuzx.mapper.IUserMapper.update", user);
         //打印结果
         System.out.println(insert);
 
@@ -96,7 +98,7 @@ public class SqlSessionCRUDTest {
 
 
         //执行sql语句
-        final int insert = sqlSession.delete("userMapper.delete", 4);
+        final int insert = sqlSession.delete("com.wuzx.mapper.IUserMapper.delete", 4);
         //打印结果
         System.out.println(insert);
 

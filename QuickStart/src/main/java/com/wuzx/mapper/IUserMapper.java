@@ -5,10 +5,12 @@ import org.apache.ibatis.annotations.*;
 import org.mybatis.caches.redis.RedisCache;
 
 import java.util.List;
-//@CacheNamespace(implementation = RedisCache.class) // 开启二级缓存
+@CacheNamespace(implementation = RedisCache.class) // 开启二级缓存
 public interface IUserMapper {
 
     List<User> findAll();
+
+    User findById2(Integer id);
 
 
     List<User> findUserOrder();

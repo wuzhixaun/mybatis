@@ -1,5 +1,6 @@
 package com.wuzx.plugin;
 
+import org.apache.ibatis.executor.statement.PreparedStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.plugin.*;
 
@@ -8,7 +9,7 @@ import java.util.Properties;
 
 
 @Intercepts({
-        @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
+        @Signature(type = PreparedStatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})
 
 })
 public class MyPlugin implements Interceptor {
@@ -23,7 +24,8 @@ public class MyPlugin implements Interceptor {
      */
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("对方法进行了增强，，，，");
+        final Object target = invocation.getTarget();
+        System.out.println(target + "对方法进行了增强，，，，");
         return invocation.proceed(); //让原方法执行
     }
 
@@ -35,6 +37,7 @@ public class MyPlugin implements Interceptor {
      */
     @Override
     public Object plugin(Object target) {
+        System.out.println("将要包装的⽬标对象："+target);
         final Object wrap = Plugin.wrap(target, this);
         return wrap;
     }

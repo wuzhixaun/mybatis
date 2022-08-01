@@ -2,9 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.wuzx.mapper.IUserMapper">
+<!-- 开启二级缓存 -->
+<!--<cache type="org.mybatis.caches.redis.RedisCache"></cache>-->
     <select id="findAll" resultType="user">
         select * from user
+    </select>
+
+
+    <select id="findById2" resultType="user">
+        select * from user where  id = #{id}
     </select>
 
     <insert id="add" parameterType="user">
